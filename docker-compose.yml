@@ -1,0 +1,51 @@
+version: '2'
+services:
+    jhisterdemo-app:
+        image: jhisterdemo
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - 'SPRING_PROFILES_ACTIVE=prod,swagger'
+            - 'EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka'
+            - 'SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config'
+            - 'SPRING_DATASOURCE_URL=jdbc:mysql://jhisterdemo-mysql:3306/jhisterdemo?useUnicode=true&characterEncoding=utf8&useSSL=false'
+            - JHIPSTER_SLEEP=30
+            - 'SPRING_DATA_JEST_URI=http://jhisterdemo-elasticsearch:9200'
+            - JHIPSTER_METRICS_PROMETHEUS_ENABLED=true
+            - JHIPSTER_METRICS_PROMETHEUS_ENDPOINT=/prometheusMetrics
+            - JHIPSTER_REGISTRY_PASSWORD=admin
+    jhisterdemo-mysql:
+        image: 'mysql:5.7.20'
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=jhisterdemo
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+    jhisterdemo-elasticsearch:
+        image: 'elasticsearch:5.6.13'
+        command: '-Enetwork.host=0.0.0.0 -Ediscovery.type=single-node'
+        environment:
+            - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
+    
+    jhipster-registry:
+        extends:
+            file: jhipster-registry.yml
+            service: jhipster-registry
+
+    prometheus:
+        extends:
+            file: prometheus.yml
+            service: prometheus
+
+    alertmanager:
+        extends:
+            file: prometheus.yml
+            service: alertmanager
+
+    grafana:
+        extends:
+            file: prometheus.yml
+            service: grafana
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}

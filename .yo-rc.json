@@ -38,6 +38,12 @@
       "de"
     ],
     "skipClient": true,
-    "skipUserManagement": true
+    "skipUserManagement": true,
+    "appsFolders": [
+      "jhipster_demo"
+    ],
+    "directoryPath": "../",
+    "gatewayType": "zuul",
+    "monitoring": "prometheus"
   }
 }
