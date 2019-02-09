@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.alex.myapp",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.8.1",
+    "applicationType": "microservice",
+    "baseName": "jhisterdemo",
+    "packageName": "com.alex.myapp",
+    "packageFolder": "com/alex/myapp",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZTM0YjFkNTAwMWU0Y2JkNzlhMmJjZWVkNTZhNWNiMDYzMDVhMzgzM2Y1MTkwYzQ5NTIyNTFmMDM0NDY5MzM0MWIwMjQyN2FhMWJkOGY2NTQ5YmQ3NGMzM2ZjYzUwOTVhZTgzODQyMTc4YjU3ODA3OGUzZmZhM2U5NjE0OGNkNDA=",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "de"
+    ],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
